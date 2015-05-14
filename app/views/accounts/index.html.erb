@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Account-app</h2>
+<% if user_signed_in? %>
+
+<% @accounts.each do |account|%>
+    kind: <%= account.kind%>  
+    cost: <%= account.cost%>
+    <%= link_to  "delete" , account_path(account) ,method:"delete"%>
+    <%= link_to "edit", edit_account_path(account) %>
+    <br>
+  <% end %>
+
+<%= link_to "New Account", new_account_path %>
+<% else %>
+Please <%= link_to "註冊", new_user_registration_path %> or
+<%= link_to "登入", new_user_session_path %> to use the app !!
+<% end %>
